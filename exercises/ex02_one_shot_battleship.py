@@ -1,27 +1,29 @@
-"""Battleship"""
+"""EX02 - One Shot Battleship."""
+
+__author__ = "730323164"
 
 grid_size: int = 4
 secret_row: int = 3
 secret_column: int = 2
 
 row: int = int(input("Guess a row: "))
+
 while row < 1 or row > grid_size:
-    print(f"The grid is only {grid_size} by {grid_size}. Try again: ")
-    row = int(input("Guess a row: "))
+    row = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
 
 column: int = int(input("Guess a column: "))
+
 while column < 1 or column > grid_size:
-    print(f"The grid is only {grid_size} by {grid_size}. Try again: ")
-    column = int(input("Guess a column: "))
+    column = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
 
 BLUE_BOX: str = "\U0001F7E6"
 RED_BOX: str = "\U0001F7E5"
 WHITE_BOX: str = "\U00002B1C"
 
 if row == secret_row and column == secret_column:
-    result: str = RED_BOX
+    assign: str = RED_BOX
 else:
-    result: str = WHITE_BOX
+    assign: str = WHITE_BOX
 
 row_input: int = 1
 while row_input <= grid_size:
@@ -30,7 +32,7 @@ while row_input <= grid_size:
     if row == row_input:
         while column_input <= grid_size:
             if column == column_input:
-                box += result
+                box += assign
             else:
                 box += BLUE_BOX
             column_input += 1
