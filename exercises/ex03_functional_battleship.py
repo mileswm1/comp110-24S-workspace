@@ -25,17 +25,19 @@ def input_guess(grid_size: int, spec: str) -> int:
 
 def print_grid(grid_size: int, row: int, column: int, correct: bool) -> None:
     """Function print grid."""
-    
-    if row == row_input and column == column_input:
-        assign: str = RED_BOX
-    else:
-        assign: str = WHITE_BOX
-
     row_input: int = 1
+    column_input: int = 1
+    assign: str = ""
+    
+    if correct:
+        assign = RED_BOX
+    else:
+        assign = WHITE_BOX
+
     while row_input <= grid_size:
         box: str = ""
-        column_input: int = 1
         if row == row_input:
+            column_input = 1
             while column_input <= grid_size:
                 if column == column_input:
                     box += assign
@@ -43,32 +45,37 @@ def print_grid(grid_size: int, row: int, column: int, correct: bool) -> None:
                     box += BLUE_BOX
                 column_input += 1
         else:
+            column_input = 1
             while column_input <= grid_size:
                 box += BLUE_BOX
                 column_input += 1
-        print(box)
         row_input += 1
+        print(box)
         
 
-def correct_guess(row_input: int, column_input: int, row: int, column: int) -> bool:
+def correct_guess(secret_row: int, secret_column: int, row: int, column: int) -> bool:
     """Function to define correct guess."""
-    if row_input == row and column_input == column:
+    if secret_row == row and secret_column == column:
         return True
     else:
         return False
     
 
-def main(grid_size: int, row_input: int, column_input: int) -> None:
+def main(grid_size: int, secret_row: int, secret_column: int) -> None:
     """Function to run main game loop."""
     turns: int = 1
     game_over: bool = False
 
     while turns <= 5 and not game_over:
         print(f"=== Turn {turns}/{5} ===")
+        
         row: int = input_guess(grid_size, "row")
         column: int = input_guess(grid_size, "column")
-        correct: bool = correct_guess(row_input, column_input, row, column)
+        
+        correct: bool = correct_guess(secret_row, secret_column, row, column)
+        
         print_grid(grid_size, row, column, correct)
+        
         if correct:
             print("Hit!")
             print(f"You won in {turns}/{5} turns!")
