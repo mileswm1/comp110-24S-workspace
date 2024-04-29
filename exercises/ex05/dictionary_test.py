@@ -1,37 +1,20 @@
-"""My first program for COMP110."""
-
-__author__ = "730323164"
-
-print("Hello, world.")
-
-
-
 """Dictionary Tests - EX06."""
 
 __author__ = "730323164"
 
-
 import pytest
-
-
 from dictionary import invert, favorite_color, count, alphabetizer, update_attendance
 
 
-with pytest.raises(KeyError):
-    my_dictionary = {'alyssa': 'byrnes', 'adam': 'byrnes'}
-    invert(my_dictionary)
-
-
 def test_invert_common_one():
-    """Test invert with a simple dictionary."""
-    assert invert({'alyssa': '1', 'adam': '2'}) == {'1': 'alyssa', '2': 'adam'}
+    """Test that invert raises KeyError when two keys map to the same value."""
+    with pytest.raises(KeyError):
+        invert({'alyssa': 'byrnes', 'adam': 'byrnes'})
 
 
 def test_invert_common_two():
-    """Test invert should raise KeyError when two keys have the same value."""
-    with pytest.raises(KeyError):
-        my_dictionary = {'alyssa': 'byrnes', 'adam': 'byrnes'}
-        invert(my_dictionary)
+    """Test invert with a simple dictionary."""
+    assert invert({'alyssa': '1', 'adam': '2'}) == {'1': 'alyssa', '2': 'adam'}
 
 
 def test_invert_edge():
@@ -46,7 +29,7 @@ def test_favorite_color_common_one():
 
 def test_favorite_color_common_two():
     """Test favorite_color breaks ties based on the first appearance."""
-    assert favorite_color({'Alyssa': 'red', 'Byrnes': 'blue', 'Adam': 'blue', 'miles': 'red'}) == 'red'
+    assert favorite_color({'Alyssa': 'red', 'Byrnes': 'blue', 'Adam': 'blue', 'Miles': 'red'}) == 'red'
 
 
 def test_favorite_color_edge():
