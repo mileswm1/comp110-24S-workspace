@@ -2,6 +2,7 @@
 
 __author__ = "730323164"
 
+
 def insertion_sort(x: list[int]) -> None:
     """Basic insertion sort algorithm. Insert into an already sorted list."""
     sorted_index: int = 0
@@ -36,4 +37,3 @@ def selection_sort(x: list[int]) -> None:
         # Assign the value of the temporary variable to x[min_idx]
         x[min_idx] = temp
     return None
-    

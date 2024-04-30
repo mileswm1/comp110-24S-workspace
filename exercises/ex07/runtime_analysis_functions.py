@@ -1,3 +1,5 @@
+"""Runtime analysis functions."""
+
 import numpy as np
 import timeit
 import tracemalloc
