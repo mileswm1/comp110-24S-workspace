@@ -5,6 +5,8 @@ import timeit
 import tracemalloc
 import random
 
+from exercises.ex07.sort_functions import selection_sort, insertion_sort
+
 MAX_VAL: int = 10 ** 5
 
 def random_descending_list(n: int) -> list[int]:

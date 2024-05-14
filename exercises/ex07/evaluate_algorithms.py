@@ -10,7 +10,7 @@ START_SIZE: int = 0
 END_SIZE: int = 1000
 
 
-usage = evaluate_memory_usage("selection_sort", START_SIZE, END_SIZE)
+usage = evaluate_runtime("selection_sort", START_SIZE, END_SIZE)
 plt.plot(usage)
 plt.title("Memory Usage Analysis of Selection Sort - MILESWM")
 plt.show()
